@@ -13,7 +13,7 @@ import { APP_PIPE } from '@nestjs/core';
     {
       provide: APP_PIPE,
       useClass: ValidationPipe,
-    }],
+    }]
 })
 export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
