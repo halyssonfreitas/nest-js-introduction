@@ -2,13 +2,12 @@ import { Controller, Get, Post, Body, Patch, Param, Delete, UsePipes } from '@ne
 import { CatsService } from './cats.service';
 import { CreateCatDto } from './dto/create-cat.dto';
 import { UpdateCatDto } from './dto/update-cat.dto';
-import { ValidationPipe } from  './dto/validation.pipe'
 @Controller('cats')
 export class CatsController {
   constructor(private readonly catsService: CatsService) {}
 
   @Post()
-  create(@Body(new ValidationPipe()) createCatDto: CreateCatDto) {
+  create(@Body() createCatDto: CreateCatDto) {
     return this.catsService.create(createCatDto);
   }
 
