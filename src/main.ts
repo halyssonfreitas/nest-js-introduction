@@ -12,7 +12,7 @@ async function bootstrap() {
     transform: true
   }))
   app.useGlobalGuards(new AuthGuard())
-  app.useGlobalGuards(new RolesGuard())
+  app.useGlobalGuards(new RolesGuard)
   await app.listen(3000);
 }
 bootstrap();

@@ -3,7 +3,10 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { CatsModule } from './cats/cats.module';
 import { LoggerMiddleware } from './common/middleware/logger.middleware';
-import { APP_PIPE } from '@nestjs/core';
+import { APP_GUARD, APP_PIPE } from '@nestjs/core';
+import { RolesGuard } from './common/guards/roles/roles.guard';
+import { AuthGuard } from './common/guards/auth/auth.guard';
+
 
 @Module({
   imports: [CatsModule],
@@ -13,7 +16,16 @@ import { APP_PIPE } from '@nestjs/core';
     {
       provide: APP_PIPE,
       useClass: ValidationPipe,
-    }]
+    },
+    {
+      provide: APP_GUARD,
+      useClass: RolesGuard,
+    },
+    {
+      provide: APP_GUARD,
+      useClass: AuthGuard,
+    },
+  ]
 })
 export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
