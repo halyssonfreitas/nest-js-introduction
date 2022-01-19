@@ -1,11 +1,13 @@
 import { Controller, Get, Post, Body, Patch, Param, Delete, SetMetadata, UseInterceptors } from '@nestjs/common';
 import { Roles } from 'src/common/guards/roles/roles.decorator';
 import { LoggingInterceptor } from 'src/common/interceptors/logging.interceptor';
+import { TransformInterceptor } from 'src/common/interceptors/transform.interceptor';
 import { CatsService } from './cats.service';
 import { CreateCatDto } from './dto/create-cat.dto';
 import { UpdateCatDto } from './dto/update-cat.dto';
 @Controller('cats')
 @UseInterceptors(LoggingInterceptor)
+@UseInterceptors(TransformInterceptor)
 export class CatsController {
   constructor(private readonly catsService: CatsService) {}
 
