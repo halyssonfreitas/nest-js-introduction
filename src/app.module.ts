@@ -2,7 +2,7 @@ import { MiddlewareConsumer, Module, NestModule, ValidationPipe } from '@nestjs/
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { CatsModule } from './cats/cats.module';
-import { LoggerMiddleware } from './common/middleware2/logger.middleware';
+import { LoggerMiddleware } from './common/middlewares/logger.middleware';
 import { APP_GUARD, APP_PIPE } from '@nestjs/core';
 import { RolesGuard } from './common/guards/roles/roles.guard';
 import { AuthGuard } from './common/guards/auth/auth.guard';
