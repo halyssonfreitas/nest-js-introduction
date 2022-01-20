@@ -6,10 +6,15 @@ import { LoggerMiddleware } from './common/middlewares/logger.middleware';
 import { APP_GUARD, APP_PIPE } from '@nestjs/core';
 import { RolesGuard } from './common/guards/roles/roles.guard';
 import { AuthGuard } from './common/guards/auth/auth.guard';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { Connection } from 'typeorm';
 
 
 @Module({
-  imports: [CatsModule],
+  imports: [
+    CatsModule,
+    TypeOrmModule.forRoot(),
+  ],
   controllers: [AppController],
   providers: [
     AppService,
@@ -28,6 +33,8 @@ import { AuthGuard } from './common/guards/auth/auth.guard';
   ]
 })
 export class AppModule implements NestModule {
+
+  constructor(private connection: Connection) {}
   configure(consumer: MiddlewareConsumer) {
     consumer
       .apply(LoggerMiddleware)
