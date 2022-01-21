@@ -9,6 +9,7 @@ import { AuthGuard } from './common/guards/auth/auth.guard';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Connection } from 'typeorm';
 import { UserModule } from './user/user.module';
+import { AuthModule } from './auth/auth.module';
 
 
 @Module({
@@ -16,6 +17,7 @@ import { UserModule } from './user/user.module';
     CatsModule,
     TypeOrmModule.forRoot(),
     UserModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [
