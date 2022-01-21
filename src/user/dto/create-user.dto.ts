@@ -3,7 +3,7 @@ import { IsBoolean, IsInt, IsOptional, IsString } from "class-validator";
 export class CreateUserDto {
     @IsInt()
     @IsOptional()
-    id?: number;
+    id?: string;
     @IsString()
     firstName: string;
     @IsString()
